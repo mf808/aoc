@@ -2,7 +2,7 @@ package com.bmw.back2code.aoc;
 
 import java.util.List;
 
-public class Day1 {
+public class Day1_1 {
 
     static int calcFuel(int mass) {
 
