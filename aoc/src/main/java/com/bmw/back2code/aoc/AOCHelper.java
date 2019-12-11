@@ -66,7 +66,7 @@ public class AOCHelper {
 
     }
 
-    public List<String> ReadFileByLineString(int day, int part) {
+    public static List<String> ReadFileByLineString(int day, int part) {
         List<String> allLines = null;
 
         Path path = Paths.get(PATH_TO_FILE + day + "_" + part + ".txt");

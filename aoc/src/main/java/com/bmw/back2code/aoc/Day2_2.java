@@ -55,18 +55,16 @@ public class Day2_2 {
     }
 
     public static void main(String[] args) {
-        int noun = 0;
-        int verb = 0;
 
-        int result = -1;
+        int result = 0;
 
-        for (noun = 0; noun < 100; noun++) {
-            for (verb = 0; verb < 100; verb++) {
+        for (int noun = 0; noun < 100; noun++) {
+            for (int verb = 0; verb < 100; verb++) {
                 int[] program = initMemory(noun, verb);
                 try {
                     result = runProgram(program);
                 } catch (RuntimeException e) {
-
+                    System.out.println("Encountered an error.");
                 }
 
                 if (result == 19690720) {
