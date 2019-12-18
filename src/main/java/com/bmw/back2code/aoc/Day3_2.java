@@ -1,17 +1,16 @@
 package com.bmw.back2code.aoc;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class Day3_1 {
+public class Day3_2 {
 
     public static class AOCGrid {
         int[][] grid;
         AOCPosition centerPos;
         AOCPosition currentPos;
         List<Integer> crossings;
-        Map<String,Integer> steps;
-        List<Integer> stepCounter;
-
 
         public AOCGrid(int size) {
             if (size % 2 == 0) {
@@ -22,13 +21,6 @@ public class Day3_1 {
             this.centerPos = getGridCenter();
             this.currentPos = getGridCenter();
             crossings = new ArrayList<>();
-            steps = new HashMap<>();
-            stepCounter = new ArrayList<>();
-            stepCounter.add(0);
-            stepCounter.add(0);
-            stepCounter.add(0);
-
-
         }
 
         void initPositions() {
@@ -123,10 +115,6 @@ public class Day3_1 {
         }
 
         public void markGrid(AOCPosition pos, int wireId) {
-
-
-            stepCounter.set(wireId, stepCounter.get(wireId)+1);
-
             int row = pos.getRowIndex();
             int col = pos.getColIndex();
             if (grid[row][col] == 1 && grid[row][col] != wireId) {
@@ -135,30 +123,13 @@ public class Day3_1 {
                         + Math.abs(row - getGridCenter().getRowIndex()));
 
                 crossings.add(distance);
-                String key = Integer.toString(row) + Integer.toString(col);
 
-                if( !steps.containsKey(key)) {
-                    steps.put(key, stepCounter.get(wireId));
-                }else {
-                    steps.put(key, steps.get(key) + stepCounter.get(wireId));
-
-                }
-
-                System.out.println("Crossing "+ steps.size() + "at:" + row + " " + col);
+                System.out.println("Crossing at:" + row + " " + col);
                 System.out.println("Distance is:" + distance);
-                System.out.println("Step is:" + stepCounter.get(wireId));
             } else {
                 grid[row][col] = wireId;
             }
 
-        }
-
-        public void resetGrid(int size){
-            if (size % 2 == 0) {
-                this.grid = new int[size + 1][size + 1];
-            } else {
-                this.grid = new int[size][size];
-            }
         }
 
         public void printGrid() {
@@ -201,7 +172,14 @@ public class Day3_1 {
                 pos = searchforHighestValueWithinRadius(getCenterPos(), i);
                 if (getGridValue(pos) == 3) {
 
+                    // System.out.println("Found at:" + pos.getRowIndex() + " " +
+                    // pos.getColIndex());
 
+                    // System.out.println(getGridValue(pos));
+
+                    // System.out.println("Distance is:" + (Math.abs(pos.getColIndex() -
+                    // getGridCenter().getColIndex())
+                    // + Math.abs(pos.getRowIndex() - getGridCenter().getRowIndex())));
                 }
             }
 

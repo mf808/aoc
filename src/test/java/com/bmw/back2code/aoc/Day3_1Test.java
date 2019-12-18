@@ -8,9 +8,8 @@ import com.bmw.back2code.aoc.Day3_1.AOCWire;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.security.cert.CollectionCertStoreParameters;
+import java.util.*;
 
 class Day3_1Test {
 
@@ -344,6 +343,106 @@ class Day3_1Test {
         // then
         Assertions.assertEquals(5319, grid.crossings.get(0));
     }
+
+
+    @Test
+    void findSteps1() {
+        // given
+
+        List<AOCWire> wires = Arrays.asList(new AOCWire("R75,D30,R83,U83,L12,D49,R71,U7,L72"),
+                new AOCWire("U62,R66,U55,R34,D71,R55,D58,R83"));
+        AOCGrid grid1 = new AOCGrid(700);
+
+        // when
+        grid1.applyWire(wires.get(1), 1);
+        grid1.applyWire(wires.get(0), 2);
+        System.out.println(grid1.steps.toString());
+
+
+        AOCGrid grid2 = new AOCGrid(700);
+        grid2.applyWire(wires.get(0), 1);
+        grid2.applyWire(wires.get(1), 2);
+
+        System.out.println(grid2.steps.toString());
+
+        List<Integer> results = new ArrayList<>();
+
+        for (String key : grid1.steps.keySet()) {
+            results.add(grid1.steps.get(key)+grid2.steps.get(key));
+
+        }
+        Collections.sort(results);
+
+
+        // then
+        Assertions.assertEquals(610, results.get(0));
+    }
+
+    @Test
+    void findSteps2() {
+        // given
+
+        List<AOCWire> wires = Arrays.asList(new AOCWire("R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51"),
+                new AOCWire("U98,R91,D20,R16,D67,R40,U7,R15,U6,R7"));
+        AOCGrid grid1 = new AOCGrid(700);
+
+        // when
+        grid1.applyWire(wires.get(1), 1);
+        grid1.applyWire(wires.get(0), 2);
+        System.out.println(grid1.steps.toString());
+
+
+        AOCGrid grid2 = new AOCGrid(700);
+        grid2.applyWire(wires.get(0), 1);
+        grid2.applyWire(wires.get(1), 2);
+
+        System.out.println(grid2.steps.toString());
+
+        List<Integer> results = new ArrayList<>();
+
+        for (String key : grid1.steps.keySet()) {
+            results.add(grid1.steps.get(key)+grid2.steps.get(key));
+
+        }
+        Collections.sort(results);
+
+
+        // then
+        Assertions.assertEquals(410, results.get(0));
+    }
+
+
+    @Test
+    void findSteps() {
+        // given
+        List<AOCWire> wires = AOCWire.buildWiresFromInput(AOCHelper.ReadFileByLineString(3, 1));
+        AOCGrid grid1 = new AOCGrid(25000);
+        // when
+        grid1.applyWire(wires.get(1), 1);
+        grid1.applyWire(wires.get(0), 2);
+        System.out.println(grid1.steps.toString());
+        grid1.grid=null;
+
+        AOCGrid grid2 = new AOCGrid(25000);
+        grid2.applyWire(wires.get(0), 1);
+        grid2.applyWire(wires.get(1), 2);
+
+        System.out.println(grid2.steps.toString());
+
+        List<Integer> results = new ArrayList<>();
+
+        for (String key : grid1.steps.keySet()) {
+            results.add(grid1.steps.get(key)+grid2.steps.get(key));
+
+        }
+        Collections.sort(results);
+
+        //then
+        System.out.println(results.get(0));
+
+    }
+
+
 
     @Test
     void positionEqualityTest() {
