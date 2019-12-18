@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class AOCHelper {
 
-    final static String PATH_TO_FILE = "C:\\develop\\adventOfCode\\aoc\\src\\main\\resources\\day";
+    final static String PATH_TO_FILE = "C:\\Dev\\code\\aoc\\src\\main\\resources\\day";
 
     public static List<Integer> ReadFileByLineInt(int day, int part) {
         List<Integer> allLines = null;
