@@ -9,7 +9,7 @@ public class Day3_1 {
         AOCPosition centerPos;
         AOCPosition currentPos;
         List<Integer> crossings;
-        Map<String,Integer> steps;
+        Map<String, Integer> steps;
         List<Integer> stepCounter;
 
 
@@ -125,7 +125,7 @@ public class Day3_1 {
         public void markGrid(AOCPosition pos, int wireId) {
 
 
-            stepCounter.set(wireId, stepCounter.get(wireId)+1);
+            stepCounter.set(wireId, stepCounter.get(wireId) + 1);
 
             int row = pos.getRowIndex();
             int col = pos.getColIndex();
@@ -135,16 +135,16 @@ public class Day3_1 {
                         + Math.abs(row - getGridCenter().getRowIndex()));
 
                 crossings.add(distance);
-                String key = Integer.toString(row) + Integer.toString(col);
+                String key = Integer.toString(row) + col;
 
-                if( !steps.containsKey(key)) {
+                if (!steps.containsKey(key)) {
                     steps.put(key, stepCounter.get(wireId));
-                }else {
+                } else {
                     steps.put(key, steps.get(key) + stepCounter.get(wireId));
 
                 }
 
-                System.out.println("Crossing "+ steps.size() + "at:" + row + " " + col);
+                System.out.println("Crossing " + steps.size() + "at:" + row + " " + col);
                 System.out.println("Distance is:" + distance);
                 System.out.println("Step is:" + stepCounter.get(wireId));
             } else {
@@ -153,7 +153,7 @@ public class Day3_1 {
 
         }
 
-        public void resetGrid(int size){
+        public void resetGrid(int size) {
             if (size % 2 == 0) {
                 this.grid = new int[size + 1][size + 1];
             } else {
@@ -168,7 +168,6 @@ public class Day3_1 {
                 }
                 System.out.println();
             }
-            ;
         }
 
         public void applyWire(AOCWire wire, int wireId) {
@@ -289,9 +288,7 @@ public class Day3_1 {
             AOCPosition other = (AOCPosition) obj;
             if (colIndex != other.colIndex)
                 return false;
-            if (rowIndex != other.rowIndex)
-                return false;
-            return true;
+            return rowIndex == other.rowIndex;
         }
 
     }
@@ -338,7 +335,7 @@ public class Day3_1 {
         private List<AOCPatch> processWire(String wire) {
 
             List<AOCPatch> patches = new ArrayList<>();
-            for (String p : Arrays.asList(wire.split(","))) {
+            for (String p : wire.split(",")) {
 
                 patches.add(new AOCPatch(p));
             }
