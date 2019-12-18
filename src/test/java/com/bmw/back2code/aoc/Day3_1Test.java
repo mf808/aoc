@@ -8,7 +8,6 @@ import com.bmw.back2code.aoc.Day3_1.AOCWire;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.security.cert.CollectionCertStoreParameters;
 import java.util.*;
 
 class Day3_1Test {
@@ -54,7 +53,7 @@ class Day3_1Test {
 
         // when
         AOCWire wire = new AOCWire();
-        wire.setWire(Arrays.asList(new AOCPatch("R75")));
+        wire.setWire(Collections.singletonList(new AOCPatch("R75")));
 
         // then
         Assertions.assertEquals(wire.getPatches().size(), 1);
@@ -279,9 +278,8 @@ class Day3_1Test {
 
         grid.applyWire(wires.get(1), 2);
         grid.printGrid();
-        int mD = grid.calcManhattendistance();
-        System.out.println(mD);
-        Collections.sort(grid.crossings);
+
+             Collections.sort(grid.crossings);
         System.out.println(grid.crossings);
         System.out.println("RESULT:" + grid.crossings.get(0));
         // then
@@ -300,7 +298,7 @@ class Day3_1Test {
         grid.applyWire(wires.get(0), 1);
         grid.applyWire(wires.get(1), 2);
         // grid.printGrid();
-        int mD = grid.calcManhattendistance();
+
         Collections.sort(grid.crossings);
         System.out.println(grid.crossings);
         System.out.println("RESULT:" + grid.crossings.get(0));
@@ -320,7 +318,7 @@ class Day3_1Test {
         // when
         grid.applyWire(wires.get(0), 1);
         grid.applyWire(wires.get(1), 2);
-        int mD = grid.calcManhattendistance();
+
         Collections.sort(grid.crossings);
         System.out.println(grid.crossings);
         System.out.println("RESULT:" + grid.crossings.get(0));

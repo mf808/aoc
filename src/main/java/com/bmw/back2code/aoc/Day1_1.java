@@ -16,7 +16,7 @@ public class Day1_1 {
 
     public static int calculateFuelForModules(List<Integer> readFileByLineInt) {
 
-        return readFileByLineInt.stream().map(m -> calcFuel(m)).mapToInt(Integer::intValue).sum();
+        return readFileByLineInt.stream().map(Day1_1::calcFuel).mapToInt(Integer::intValue).sum();
 
     }
 

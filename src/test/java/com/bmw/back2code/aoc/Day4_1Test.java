@@ -9,7 +9,6 @@ class Day4_1Test {
     void compute1(){
 
         //given
-        int numDigits=2;
         int lowerRange=10;
         int upperRange=20;
 
@@ -60,7 +59,7 @@ class Day4_1Test {
     boolean result = Day4_1.hasAdjacentNumbers(password);
 
     //then
-    Assertions.assertEquals(true,result);
+    Assertions.assertTrue(result);
 }
     @Test
     void adjacentTestFalse(){
@@ -72,7 +71,7 @@ class Day4_1Test {
         boolean result = Day4_1.hasAdjacentNumbers(password);
 
         //then
-        Assertions.assertEquals(false,result);
+        Assertions.assertFalse(result);
     }
 
     @Test
@@ -85,7 +84,7 @@ class Day4_1Test {
         boolean result = Day4_1.hasOnlyRisingDigits(password);
 
         //then
-        Assertions.assertEquals(true,result);
+        Assertions.assertTrue(result);
     }
 
     @Test
@@ -98,7 +97,7 @@ class Day4_1Test {
         boolean result = Day4_1.hasOnlyRisingDigits(password);
 
         //then
-        Assertions.assertEquals(true,result);
+        Assertions.assertTrue(result);
     }
 
     @Test
@@ -111,7 +110,7 @@ class Day4_1Test {
         boolean result = Day4_1.hasOnlyRisingDigits(password);
 
         //then
-        Assertions.assertEquals(false,result);
+        Assertions.assertFalse(result);
     }
 
     @Test
@@ -124,7 +123,7 @@ class Day4_1Test {
         boolean result = Day4_1.hasOnlyRisingDigits(password) &&Day4_1.hasAdjacentNumbers(password) ;
 
         //then
-        Assertions.assertEquals(true,result);
+        Assertions.assertTrue(result);
     }
     @Test
     void testFalse1(){
@@ -136,7 +135,7 @@ class Day4_1Test {
         boolean result = Day4_1.hasOnlyRisingDigits(password) &&Day4_1.hasAdjacentNumbers(password) ;
 
         //then
-        Assertions.assertEquals(false,result);
+        Assertions.assertFalse(result);
     }
     @Test
     void testFalse2(){
@@ -148,7 +147,7 @@ class Day4_1Test {
         boolean result = Day4_1.hasOnlyRisingDigits(password) &&Day4_1.hasAdjacentNumbers(password) ;
 
         //then
-        Assertions.assertEquals(false,result);
+        Assertions.assertFalse(result);
     }
 
     @Test
@@ -161,7 +160,7 @@ class Day4_1Test {
         boolean result = Day4_1.hasOnlyRisingDigits(password) &&Day4_1.hasAdjacentNumbersOnlyTwice(password) ;
 
         //then
-        Assertions.assertEquals(true,result);
+        Assertions.assertTrue(result);
     }
 
 
@@ -175,7 +174,7 @@ class Day4_1Test {
         boolean result = Day4_1.hasOnlyRisingDigits(password) &&Day4_1.hasAdjacentNumbersOnlyTwice(password) ;
 
         //then
-        Assertions.assertEquals(true,result);
+        Assertions.assertTrue(result);
     }
 
 
@@ -190,7 +189,7 @@ class Day4_1Test {
         boolean result = Day4_1.hasOnlyRisingDigits(password) && Day4_1.hasAdjacentNumbersOnlyTwice(password) ;
 
         //then
-        Assertions.assertEquals(true,result);
+        Assertions.assertTrue(result);
     }
 
     @Test
@@ -203,7 +202,7 @@ class Day4_1Test {
         boolean result = Day4_1.hasOnlyRisingDigits(password) && Day4_1.hasAdjacentNumbersOnlyTwice(password) ;
 
         //then
-        Assertions.assertEquals(true,result);
+        Assertions.assertTrue(result);
     }
 
 

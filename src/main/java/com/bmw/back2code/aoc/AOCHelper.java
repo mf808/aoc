@@ -20,7 +20,7 @@ public class AOCHelper {
         try {
             allLines = Files.readAllLines(path, StandardCharsets.UTF_8)
                     .stream()
-                    .mapToInt(s -> Integer.parseInt(s))
+                    .mapToInt(Integer::parseInt)
                     .boxed()
                     .collect(Collectors.toList());
         } catch (IOException e) {
@@ -38,7 +38,7 @@ public class AOCHelper {
         try {
             allLines = Files.readAllLines(path, StandardCharsets.UTF_8)
                     .stream()
-                    .mapToInt(s -> Integer.parseInt(s))
+                    .mapToInt(Integer::parseInt)
                     .toArray();
 
         } catch (IOException e) {

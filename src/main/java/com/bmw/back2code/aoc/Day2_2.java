@@ -34,9 +34,7 @@ public class Day2_2 {
     public static int runProgram(int[] program) {
         execute = new HashMap<>();
 
-        execute.put(ADD, (a, b) -> {
-            return a + b;
-        });
+        execute.put(ADD, Integer::sum);
         execute.put(MUL, (a, b) -> {
             return a * b;
         });

@@ -162,9 +162,9 @@ public class Day3_1 {
         }
 
         public void printGrid() {
-            for (int i = 0; i < grid.length; i++) {
-                for (int j = 0; j < grid[i].length; j++) {
-                    System.out.print(grid[i][j] + " ");
+            for (int[] ints : grid) {
+                for (int j = 0; j < ints.length; j++) {
+                    System.out.print(ints[j] + " ");
                 }
                 System.out.println();
             }
@@ -193,36 +193,6 @@ public class Day3_1 {
 
         }
 
-        public int calcManhattendistance() {
-
-            AOCPosition pos = new AOCPosition(0, 0);
-            for (int i = 1; i <= grid.length / 2; i++) {
-                pos = searchforHighestValueWithinRadius(getCenterPos(), i);
-                if (getGridValue(pos) == 3) {
-
-
-                }
-            }
-
-            return 0;
-        }
-
-        public AOCPosition searchforHighestValueWithinRadius(AOCPosition pos, int radius) {
-
-            int cr = getGridCenter().getRowIndex();
-            int cc = getGridCenter().getColIndex();
-            int topLeftRow = cr - radius;
-            int topLeftCol = cc - radius;
-
-            for (int i = topLeftRow; i <= topLeftRow + 2 * radius; i++) {
-                for (int j = topLeftCol; j <= topLeftCol + 2 * radius; j++) {
-                    if (getGridValue(new AOCPosition(i, j)) > 2) {
-                        return new AOCPosition(i, j);
-                    }
-                }
-            }
-            return pos;
-        }
 
     }
 
