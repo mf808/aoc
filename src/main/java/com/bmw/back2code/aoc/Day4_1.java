@@ -2,67 +2,47 @@ package com.bmw.back2code.aoc;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
+import static java.util.stream.Collectors.*;
 
 public class Day4_1 {
 
 
-    public static int go(String input) {
-        int lR = Integer.parseInt(input.split("-")[0]);
-        int uR = Integer.parseInt(input.split("-")[1]);
-        int numDigits = input.split("-")[0].length();
-        int result = computePossiblePasswords(numDigits,lR, uR);
-        return result;
+
+    public static int computePossiblePasswordsPart1(int lowerRange, int upperRange){
+
+         return (int)IntStream.rangeClosed(lowerRange, upperRange).filter(p -> hasAdjacentNumbers(Integer.toString(p)) && hasOnlyRisingDigits(Integer.toString(p))).count();
+
+    }
+
+    public static int computePossiblePasswordsPart2(int lowerRange, int upperRange){
+        return (int)IntStream.rangeClosed(lowerRange, upperRange).filter(p -> hasAdjacentNumbersOnlyTwice(Integer.toString(p)) && hasOnlyRisingDigits(Integer.toString(p))).count();
     }
 
 
-    public static int computePossiblePasswords(int numDigits, int lowerRange, int upperRange){
-        int start = lowerRange;
-        int stop = upperRange;
-        int possiblePWs=0;
-        for (int pw =start ;pw<=stop;pw++){
+    public static boolean hasAdjacentNumbers(String password) {
 
-            if (hasAdjacentNumbers(pw) && hasOnlyRisingDigits(pw))
-                possiblePWs++;
-        }
+        List <String> digitList = Arrays.asList(password.split(""));
 
+        return digitList.stream().collect(groupingBy(str->str, counting())).entrySet().stream().filter(x->x.getValue()>=2).count()>0 ;
+    }
 
-        return possiblePWs;
+    public static boolean hasAdjacentNumbersOnlyTwice(String password) {
+
+        List <String> digitList = Arrays.asList(password.split(""));
+
+        return digitList.stream().collect(groupingBy(str->str, counting())).entrySet().stream().filter(x->x.getValue()==2).count()>0 ;
+
     }
 
 
-    public static boolean hasAdjacentNumbers(int password) {
+    public static boolean hasOnlyRisingDigits(String password) {
 
-        String word = Integer.toString(password);
-        char[] words = word.toCharArray();
-        //long result = IntStream.range(1,word.length()).mapToObj(n ->(words[n] == words[n-1])).count();
+        String[] digits = password.split("");
 
-        boolean result =false;
-
-        for (int i = 1; i<word.length(); i++){
-            if (words[i] == words[i-1]) {
-                result = true;
-            }
-        }
-
-
-        return result;
+        Arrays.sort(digits);
+        return Arrays.equals(digits, password.split(""));
     }
 
-    public static boolean hasOnlyRisingDigits(int password) {
-        String word = Integer.toString(password);
-        char[] words = word.toCharArray();
-        //long result = IntStream.range(1,word.length()).mapToObj(n ->(words[n] == words[n-1])).count();
-
-        boolean result =true;
-
-        for (int i = 1; i<word.length(); i++){
-            if (  words[i-1] > words[i]) {
-                result = false;
-            }
-        }
-
-         return result;
-    }
 }
